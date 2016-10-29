@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <h1>CUSTOM LOGIN</h1>
+    <form class="signup" id="signup_form" method="post" action="{% url 'account_login' %}">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+
+        <div class="">
+            {{ form.email.errors }}
+            {{ form.email.label_tag}}
+            {{ form.email}}
+        </div>
+
+        <div class="">
+            {{ form.password1.errors }}
+            {{ form.password1.label_tag}}
+            {{ form.password1}}
+        </div>
+        <div class="">
+            {{ form.password2.errors }}
+            {{ form.password2.label_tag}}
+            {{ form.password2}}
+        </div>
+        {{ form.confirmation_key}}
+        {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+        {% endif %}
+    <button type="submit" class="button button-3d">Register</button>
+</form>
+
+{% comment %}
+
+{% extends "account/base.html" %}
+
+{% load i18n %}
+
+{% block head_title %}{% trans "Signup" %}{% endblock %}
+
+{% block content %}
+<h1>{% trans "Sign Up" %}</h1>
+
+<p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+
+<form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+  {% csrf_token %}
+  {{ form.as_p }}
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+  {% endif %}
+  <button type="submit">{% trans "Sign Up" %} &raquo;</button>
+</form>
+
+{% endblock %}
+{% endcomment %}
+</body>
+</html>

@@ -6,5 +6,10 @@
 </head>
 <body>
     <p>{% lorem %}</p>
+    <a href="{% url 'a_signup' %}">Sign Up</a>
+    {% if auth %}
+        <a href="{% url 'account_logout' %}">Logout</a>
+        <p>You are currently logged in as {{ request.user }}</p>
+    {% endif %}
 </body>
 </html>

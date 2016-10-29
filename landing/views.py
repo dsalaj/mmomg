@@ -4,5 +4,5 @@ from django.shortcuts import render
 
 
 def landing(request):
-    context = {'test': 123}
+    context = {'auth': request.user.is_authenticated}
     return render(request, 'landing/index.html', context)
