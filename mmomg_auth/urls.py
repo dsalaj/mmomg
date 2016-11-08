@@ -19,5 +19,6 @@ from mmomg_auth import views
 
 urlpatterns = [
     url(r'^signup/$', views.signup, name='a_signup'),
+    url(r'^login/$', views.login, name='a_login'),
     url(r'', include(allauth_urls)),
 ]

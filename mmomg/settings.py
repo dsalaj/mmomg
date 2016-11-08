@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'celery',
+    'django_celery_results',
+    'django_celery_beat',
 
     'allauth',
     'allauth.account',
@@ -142,3 +145,8 @@ AUTHENTICATION_BACKENDS = (
 )
 
 LOGIN_REDIRECT_URL = "/"
+
+CELERY_RESULT_BACKEND = 'django-db'
+# CELERY_BROKER_URL = 'django://localhost'
+# CELERY_BROKER_URL = 'amqp://guest@localhost//'
+# CELERY_BROKER_URL = 'amqp://guest:guest@localhost:15711//'
